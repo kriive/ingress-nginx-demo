@@ -1,0 +1,18 @@
+resources:
+  - github.com/kubernetes/ingress-nginx/deploy/static/provider/baremetal?ref=main
+  - ./custom-headers.yaml
+
+namespace: ingress-nginx
+
+patches:
+  - path: patches/nodeport-patch.yaml
+
+configMapGenerator:
+  - name: ingress-nginx-controller
+    namespace: ingress-nginx
+    behavior: replace
+    literals:
+      - global-allowed-response-headers=X-Different-Name,X-Request-Start,X-Using-Nginx-Controller
+
+generatorOptions:
+  disableNameSuffixHash: true

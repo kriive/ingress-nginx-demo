@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/custom-headers: ingress-nginx/custom-headers
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: 127.0.0.1.nip.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: foo-svc
+            port:
+              number: 80
+        path: /foo(/|$)(.*)
+        pathType: ImplementationSpecific
+      - backend:
+          service:
+            name: bar-svc
+            port:
+              number: 80
+        path: /bar(/|$)(.*)
+        pathType: ImplementationSpecific
+  tls:
+    - hosts:
+      - 127.0.0.1.nip.io
+

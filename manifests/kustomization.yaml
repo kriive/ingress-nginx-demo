@@ -1,0 +1,5 @@
+resources:
+  - ./foo.yaml
+  - ./bar.yaml
+  - ./ingress.yaml
+  

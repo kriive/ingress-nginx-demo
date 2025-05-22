@@ -1,0 +1,13 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: ingress
+networking:
+  disableDefaultCNI: false
+nodes:
+  - role: control-plane
+  - role: worker
+    extraPortMappings:
+    - containerPort: 31080
+      hostPort: 80
+    - containerPort: 31443
+      hostPort: 443
