@@ -1,8 +1,8 @@
 # Rewrite ingress-nginx demo
 This repository shows how to deploy two different pods that serve traffic at two different subpaths: /foo and /bar. We will instruct the ingress-nginx to rewrite the path to replace /foo with "" so that the backend service gets a clean rewritten URL (i.e. /foo/hello becomes /hello to the backend service).
 
-> [!INFO] Bonus points
-> We also set some custom headers!
+> [!NOTE]
+> Bonus points: we also set some custom headers!
 
 # Deploy
 This is a kustomize project, so you'll need `kubectl kustomize` in order to deploy this. It is also a demo, so it is assumed that it will be run under `kind`. 
@@ -68,5 +68,5 @@ Head to [https://127.0.0.1.nip.io/foo/test](https://127.0.0.1.nip.io/foo/test) a
 
 You will encounter a simple application telling you the service you're hitting and the URL that it is receiving.
 
-> [!INFO] 
+> [!TIP] 
 > You can see the source code in the `main.go` file.
