@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-root
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/custom-headers: ingress-nginx/custom-headers
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: 127.0.0.1.nip.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: root-svc
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+    - hosts:
+      - 127.0.0.1.nip.io

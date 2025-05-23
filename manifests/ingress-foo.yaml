@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress
+  name: ingress-foo
   namespace: default
   annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
@@ -19,13 +19,6 @@ spec:
             port:
               number: 80
         path: /foo(/|$)(.*)
-        pathType: ImplementationSpecific
-      - backend:
-          service:
-            name: bar-svc
-            port:
-              number: 80
-        path: /bar(/|$)(.*)
         pathType: ImplementationSpecific
   tls:
     - hosts:

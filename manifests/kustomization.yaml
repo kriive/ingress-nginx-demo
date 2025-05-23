@@ -1,5 +1,8 @@
 resources:
   - ./foo.yaml
   - ./bar.yaml
-  - ./ingress.yaml
+  - ./ingress-root.yaml
+  - ./ingress-foo.yaml
+  - ./ingress-bar.yaml
+  - ./root.yaml
   
